@@ -1,20 +1,19 @@
 import React, { Component } from 'react'
-import FormWrapper from './FormWrapper'
-import BaseInput from './BaseInput'
-import Button from './Button'
-import { validateRegisterForm } from '../services/validation'
+import FormWrapper from '../components/FormWrapper'
+import BaseInput from '../components/BaseInput'
+import Button from '../components/Button'
+import { validateLoginForm } from '../services/validation'
 import { authorizedAlert, validationErrorAlert } from '../services/alerts'
 
-class RegistrationForm extends Component {
+class LoginForm extends Component {
     state = {
         username: '',
         password: '',
-        passwordConfirmation: '',
     }
 
     onSubmit = () => {
-        const { username, password, passwordConfirmation } = this.state
-        const errors = validateRegisterForm({ username, password, passwordConfirmation })
+        const { username, password } = this.state
+        const errors = validateLoginForm({ username, password })
         if (errors) {
             validationErrorAlert()
         } else {
@@ -46,21 +45,13 @@ class RegistrationForm extends Component {
                     secureTextEntry
                     onChangeText={this.createOnChangeCallback('password')}
                     value={this.state.password}
-                    onSubmitEditing={() => this.passwordConfirmationRef && this.passwordConfirmationRef.focus()}
-                />
-                <BaseInput
-                    inputRef={ref => this.passwordConfirmationRef = ref}
-                    label="Confirm Password"
-                    align={align}
-                    secureTextEntry
-                    onChangeText={this.createOnChangeCallback('passwordConfirmation')}
-                    value={this.state.passwordConfirmation}
                     onSubmitEditing={this.onSubmit}
                 />
-                <Button title="Registration" align={align} onPress={this.onSubmit}/>
+                <BaseInput label="Forgot Password?" onLabelPress={() => {}} align={align} />
+                <Button title="Login" align={align} onPress={this.onSubmit} />
             </FormWrapper>
         )
     }
 }
 
-export default RegistrationForm
+export default LoginForm

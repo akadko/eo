@@ -2,7 +2,7 @@ import React from 'react'
 import BaseScreen from './BaseScreen'
 import Header from '../components/Header'
 import Logo from '../img/logo.png'
-import LoginForm from '../components/LoginForm'
+import LoginForm from './LoginForm'
 
 const align = 'right'
 
