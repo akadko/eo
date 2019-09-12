@@ -54,8 +54,8 @@ class AuthContainer extends Component {
 
     onScroll = ({ nativeEvent: { contentOffset } }) => {
         const { x } = contentOffset
+        const tabIndex = Math.floor(Math.round(x) / Math.round(width))
 
-        const tabIndex = Math.floor(x / width)
         const tabId = this.tabs[tabIndex].id
 
         this.setState({ activeScreenId: tabId })

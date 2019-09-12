@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, TextInput, StyleSheet } from 'react-native'
+import { View, TextInput, StyleSheet, Platform } from 'react-native'
 import Label from './Label'
 
 const styles = StyleSheet.create({
@@ -25,8 +25,8 @@ const styles = StyleSheet.create({
         borderRightWidth: 0,
     },
     shim: {
-        minHeight: 42,
-        marginTop: 8,
+        minHeight: Platform.select({ ios: 42, android: 60 }),
+        marginTop: Platform.select({ ios: 8, android: 0 }),
     },
     labelLeftAlignWrapper: {
         paddingLeft: 16,
